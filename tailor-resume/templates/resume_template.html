@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: Letter; margin: 0.35in 0.7in; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Liberation Serif', 'Times New Roman', Times, serif;
+    color: #000;
+    font-size: 9.85pt;
+    line-height: 1.15;
+  }
+  a { color: #1155cc; text-decoration: underline; }
+  .job-title a { color: #000; text-decoration: underline; }
+
+  .name { font-weight: bold; font-size: 12.5pt; margin: 0; }
+  .title { font-weight: bold; margin: 1px 0 0 0; }
+  .contact { margin: 1px 0 0 0; }
+  .links { margin: 1px 0 0 0; }
+  .links a { margin-right: 3px; }
+
+  hr.top { border: none; border-top: 1px solid #000; margin: 5px 0 5px 0; }
+  hr.section { border: none; border-top: 0.75px solid #999; margin: 1px 0 3px 0; }
+
+  h2.section {
+    font-size: 10.4pt;
+    font-weight: bold;
+    margin: 5px 0 0 0;
+  }
+
+  p.summary { margin: 0 0 0 0; text-align: justify; }
+
+  .job-title { font-weight: bold; }
+  .job-dates { font-style: italic; font-weight: normal; }
+  p.entry-head { margin: 4px 0 0 0; }
+
+  ul { margin: 1px 0 0 0; padding-left: 18px; }
+  li { margin-bottom: 0px; text-align: justify; }
+
+  .proj-title { font-weight: bold; }
+  .proj-title a { font-weight: bold; }
+  .proj-stack { font-style: italic; font-weight: normal; }
+
+  .skills p { margin: 2px 0; }
+
+  .edu p { margin: 2px 0; }
+</style>
+</head>
+<body>
+
+<p class="name">{{NAME — UPPERCASE}}</p>
+<p class="title">{{TITLE LINE — e.g. "Full-Stack Engineer — Frontend · Backend · Cloud", lightly adjusted per job}}</p>
+<p class="contact">{{LOCATION}} | {{PHONE}} | {{EMAIL}}</p>
+<p class="links"><a href="{{LINKEDIN URL}}">{{linkedin.com/in/...}}</a> | <a href="{{GITHUB URL}}">{{github.com/...}}</a> | <a href="{{PORTFOLIO URL}}">{{portfolio domain}}</a></p>
+
+<hr class="top">
+
+<h2 class="section">Summary</h2>
+<hr class="section">
+<p class="summary">{{TAILORED SUMMARY}}</p>
+
+<h2 class="section">Experience</h2>
+<hr class="section">
+<p class="entry-head"><span class="job-title">{{ROLE}} &ndash; <a href="{{COMPANY URL}}">{{COMPANY NAME}}</a></span> <span class="job-dates">({{DATES}})</span></p>
+<ul>
+  <li>{{bullet}}</li>
+</ul>
+<!-- repeat entry-head + ul per role -->
+
+<h2 class="section">Projects</h2>
+<hr class="section">
+<p class="proj-title entry-head"><a href="{{PROJECT URL OR PORTFOLIO HOME}}">{{PROJECT NAME}}</a> <span class="proj-stack">({{STACK}})</span></p>
+<ul>
+  <li>{{bullet}}</li>
+</ul>
+<!-- repeat entry-head + ul per project, reordered/selected per tailoring step -->
+
+<h2 class="section">Core Skills</h2>
+<hr class="section">
+<div class="skills">
+<p><b>{{Category}}:</b> {{items}}</p>
+<!-- one line per skill group, reordered per tailoring step -->
+</div>
+
+<h2 class="section">Education</h2>
+<hr class="section">
+<div class="edu">
+<p>{{DEGREE}} | {{INSTITUTION}} | {{PERIOD}} | {{GPA/HONORS, optional}}</p>
+<p>Languages: {{languages, optional}} | Strengths: {{strengths, optional}}</p>
+</div>
+
+</body>
+</html>
