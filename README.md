@@ -44,6 +44,14 @@ takes a JSON payload described in its own docstring, so you can swap in
 your own content source (a personal-site CV feed, a plain file, etc.)
 without changing the skill's logic.
 
+## Related
+
+This repo covers on-demand skills — invoked mid-conversation when their
+`description` matches what you're asking for. For *scheduled, unattended*
+recurring job-search checks (daily LinkedIn/job-board/company-career-page
+scans run on a cron schedule), see the companion repo:
+[Job-hunting-agent-automations](https://github.com/KiranKalluri268/Job-hunting-agent-automations).
+
 ## Requirements
 
 The résumé-rendering and PDF-checking steps shell out to a few Python
