@@ -1,8 +1,8 @@
-# Job Search Skills
+# Agent Skills
 
-A small collection of [Claude Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) for job hunting: tailoring a résumé to a specific posting, scoring how well a résumé will actually perform, and running a full research-and-outreach deep-dive on one opening.
+A small collection of portable AI agent skills for job hunting: tailoring a résumé to a specific posting, scoring how well a résumé will actually perform, and running a full research-and-outreach deep-dive on one opening.
 
-Each skill lives in its own directory with a `SKILL.md` (YAML frontmatter + instructions), following [Anthropic's Agent Skills format](https://docs.claude.com/en/docs/agents-and-tools/agent-skills), plus any supporting scripts/templates it needs.
+Each skill lives in its own directory with a `SKILL.md` — a plain-Markdown file with a short YAML frontmatter block (`name` + `description`) followed by step-by-step natural-language instructions — plus any supporting scripts/templates it needs. This is a common, framework-agnostic convention for packaging reusable agent instructions: no special runtime, SDK, or vendor lock-in required. Any AI agent or assistant that can read a Markdown file, follow instructions, and call tools (web fetch, shell/Python execution, file I/O) can use these as-is.
 
 ## Skills
 
@@ -18,13 +18,19 @@ identical no matter which one produced it.
 
 ## Using these skills
 
-Drop any of these directories into a Claude Code / Claude Agent Skills
-`skills/` directory (project-level `.claude/skills/` or your personal
-skills directory) and Claude will pick them up automatically based on each
-`SKILL.md`'s `description` field. See Anthropic's docs on
-[Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills)
-for how skill discovery and invocation works across Claude Code, the API,
-and claude.ai.
+These are not tied to any one product or SDK. Two ways to use them:
+
+- **Skill-aware agents/tools**: some agent runtimes auto-discover skills by
+  scanning a directory of `SKILL.md` files and matching each one's
+  `description` against the current task. If your tool works this way,
+  point it at (or drop these directories into) wherever it looks for
+  skills.
+- **Any other agent, assistant, or workflow**: just hand it the relevant
+  `SKILL.md` as context/instructions (paste it in, attach it, or have the
+  agent read the file) alongside the job description and résumé. The
+  instructions are self-contained plain-language steps with no
+  vendor-specific syntax, so any capable model/agent that can fetch a URL,
+  run Python, and read/write files can follow them directly.
 
 These skills are written generically — they ask for (or expect an
 attached) résumé/job description each time rather than hardcoding any one
