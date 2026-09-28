@@ -14,7 +14,12 @@ Each skill lives in its own directory with a `SKILL.md` — a plain-Markdown fil
 
 `tailor-resume` and `job-application-deep-dive` intentionally share the same
 tailoring logic, résumé template, and scoring step, so the résumé output is
-identical no matter which one produced it.
+identical no matter which one produced it. Each skill directory is fully
+self-contained — `job-application-deep-dive` keeps its own copy of the
+`templates/` and `scripts/` used to render the PDF, so you can take any one
+skill directory on its own (e.g. just `resume-fit-check`, with nothing to
+render) without needing the others. `resume-fit-check` never renders a
+résumé, so it has no `scripts/`/`templates/` of its own.
 
 ## Using these skills
 

@@ -220,11 +220,14 @@ rather than guessing wrong on a résumé they're about to send out.
 
 ## Step 5: Render the PDF
 
-Use this repo's `tailor-resume` skill's template and renderer
-(`tailor-resume/templates/resume_template.html` and
-`tailor-resume/scripts/render_resume.py`) — reproduce that visual design
-exactly, don't redesign it, and follow its render/fit-to-one-page/ATS
-parseability-check procedure in full before moving on.
+This skill ships its own copy of the fixed visual template used by
+`tailor-resume` — `templates/resume_template.html` (reference/starting
+point) and `scripts/render_resume.py` (the actual renderer, which takes a
+JSON payload — see the docstring at the top of that file for the exact
+shape). Reproduce this template exactly; it is tuned and should not be
+redesigned per request. Follow the render/fit-to-one-page/ATS
+parseability-check procedure documented in full in `tailor-resume`'s
+`SKILL.md` (Step 6) before moving on.
 
 ## Step 6: Score the final résumé before delivering
 
@@ -260,5 +263,8 @@ candidate knows what to double check before sending anything.
   this conversation.
 - This skill and `tailor-resume` intentionally render the exact same
   tailoring logic, template, parseability check, and scoring step so a
-  résumé is equally reliable regardless of which skill produced it —
-  keep them in sync if either changes.
+  résumé is equally reliable regardless of which skill produced it. This
+  directory keeps its own copy of `templates/resume_template.html` and
+  `scripts/render_resume.py` (identical to `tailor-resume`'s) so it works
+  standalone if used on its own — if you change the template or renderer
+  in one, copy the change to the other.
